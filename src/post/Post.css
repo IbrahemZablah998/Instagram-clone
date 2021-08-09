@@ -2,6 +2,7 @@
   background-color: white;
   max-width: 650px;
   border: 1px solid lightgray;
+  margin-top: 20px;
 }
 
 .post_image {
@@ -9,10 +10,6 @@
   object-fit: contain;
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
-}
-
-.post_text {
-  font-weight: normal;
 }
 
 .post_header {
@@ -33,6 +30,7 @@
 .post_favoriteIcon {
   margin-left: 20px;
   display: block;
+  cursor: pointer;
 }
 
 .post_button {
@@ -43,7 +41,11 @@
   background-color: transparent;
 }
 
-.post_commentBox {
+.post_hideCommentBox {
+  display: none;
+}
+
+.post_commentBoxShow {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -56,6 +58,30 @@
   border-top: 1px solid lightgray;
 }
 
-.post_comments {
-  padding: 20px;
+.post_commentsBoxShow {
+  padding-left: 20px;
+}
+
+.post_userLove {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.post_userComments {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.post_comments_timestamp {
+  padding-left: 10px;
+}
+
+.post_actions {
+  display: flex;
+  text-align: center;
+  align-items: center;
 }

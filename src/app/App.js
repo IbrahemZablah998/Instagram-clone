@@ -93,6 +93,7 @@ function App() {
 
   return (
     <div className="app">
+
       <Modal
         open={open}
         onClose={() => setOpen(false)}
@@ -160,9 +161,16 @@ function App() {
           className="app_headerImage"
           src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
           alt="" />
+        <div className="search">
+          <div>
+            <input type="search" placeholder="Search" />
+          </div>
+          <div className="search-icon">
+            <img src="/search-icon.svg" alt="" />
+          </div>
+        </div>
         {user ? (
           <div>
-            <strong>{user.displayName}</strong>
             <Button onClick={() => auth.signOut()}>Logout</Button>
           </div>
         ) : (
@@ -172,26 +180,29 @@ function App() {
           </div>
         )}
       </div>
-      <div className="app_posts">
-        <div className="app_postsLeft">
-          {
-            posts.map(({ post, id }) => {
-              return <Post key={id} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
-            })
-          }
-        </div>
-        <div className="app_postsRight">
-          <Avatar className="post_avatar"
-            alt={user?.displayName}
-            src="/static/images/avatar/1.jpg" />
-          <h3>{user?.displayName}</h3>
-        </div>
-      </div>
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
       ) : (
         <h3 className="app_footer">Sorry you need to login to upload</h3>
       )}
+      <div className="app_posts">
+        <div className="app_postsLeft">
+          {
+            posts.map(({ post, id }) => {
+              return <Post key={id} postId={id} timestamp={post.timestamp} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+            })
+          }
+        </div>
+        {user &&
+          <div className="app_postsRight">
+            <Avatar className="post_avatar"
+              alt={user?.displayName}
+              src="/static/images/avatar/1.jpg" />
+            <h3>{user?.displayName}</h3>
+          </div>
+        }
+      </div>
+
     </div>
   );
 }
