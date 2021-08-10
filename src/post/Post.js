@@ -7,7 +7,6 @@ import CommentIcon from '@material-ui/icons/Comment';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import './Post.css';
-import { CodeSharp } from '@material-ui/icons';
 
 function getModalStyle() {
     const top = 50;
@@ -80,7 +79,7 @@ const Post = ({ imageUrl, username, caption, postId, user, timestamp }) => {
 
     useEffect(() => {
         let unsubscribe;
-        if (postId) {
+        if (postId && user) {
             unsubscribe = db
                 .collection("posts")
                 .doc(postId)
@@ -94,7 +93,7 @@ const Post = ({ imageUrl, username, caption, postId, user, timestamp }) => {
         return () => {
             unsubscribe();
         }
-    }, [postId]);
+    }, [postId, user]);
 
     useEffect(() => {
         let sum = 0;

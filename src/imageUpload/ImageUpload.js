@@ -57,7 +57,7 @@ const ImageUpload = ({ username }) => {
                 value={caption}
                 onChange={event => setCaption(event.target.value)} />
             <input type="file" onChange={handleChange} />
-            <Button onClick={handleUpload}>Upload</Button>
+            <Button onClick={handleUpload} disabled={(!image || !caption)}>Upload</Button>
         </div>
     )
 };
