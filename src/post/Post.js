@@ -78,20 +78,15 @@ const Post = ({ imageUrl, username, caption, postId, user, timestamp }) => {
     }, [postId]);
 
     useEffect(() => {
-        let unsubscribe;
         if (postId && user) {
-            unsubscribe = db
+            db
                 .collection("posts")
                 .doc(postId)
                 .collection("lovePost")
                 .doc(user.uid)
                 .onSnapshot(snapshot => {
-                    setIsLove(snapshot.data().isLove);
+                    setIsLove(snapshot.data()?.isLove);
                 })
-        }
-
-        return () => {
-            unsubscribe();
         }
     }, [postId, user]);
 
